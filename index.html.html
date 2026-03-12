@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Komal Singhania — Digital Marketing Manager</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F0E8;
+    --warm-white: #FDFAF5;
+    --ink: #1A1612;
+    --ink-light: #3D3530;
+    --terracotta: #C4603A;
+    --terracotta-light: #E07A52;
+    --gold: #B8962E;
+    --sage: #7A8C6E;
+    --dust: #D4C5B0;
+    --dust-dark: #A89880;
+    --section-gap: 120px;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* ── CUSTOM CURSOR ── */
+  .cursor {
+    position: fixed; width: 10px; height: 10px;
+    background: var(--terracotta); border-radius: 50%;
+    pointer-events: none; z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s, width 0.3s, height 0.3s, opacity 0.3s;
+  }
+  .cursor-follower {
+    position: fixed; width: 36px; height: 36px;
+    border: 1.5px solid var(--terracotta); border-radius: 50%;
+    pointer-events: none; z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: transform 0.15s ease, width 0.3s, height 0.3s, opacity 0.3s;
+    opacity: 0.6;
+  }
+  a:hover ~ .cursor, button:hover ~ .cursor { width: 20px; height: 20px; }
+
+  /* ── NOISE TEXTURE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 1000; opacity: 0.4;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 24px 60px;
+    display: flex; justify-content: space-between; align-items: center;
+    mix-blend-mode: multiply;
+    transition: background 0.4s, padding 0.4s;
+  }
+  nav.scrolled {
+    background: rgba(245, 240, 232, 0.92);
+    backdrop-filter: blur(12px);
+    padding: 16px 60px;
+    border-bottom: 1px solid var(--dust);
+    mix-blend-mode: normal;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; font-weight: 700;
+    color: var(--ink); text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+  .nav-links { display: flex; gap: 40px; }
+  .nav-links a {
+    font-size: 13px; font-weight: 500;
+    color: var(--ink-light); text-decoration: none;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    position: relative; padding-bottom: 2px;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: 0; left: 0;
+    width: 0; height: 1px; background: var(--terracotta);
+    transition: width 0.3s ease;
+  }
+  .nav-links a:hover::after { width: 100%; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-left {
+    display: flex; flex-direction: column;
+    justify-content: center;
+    padding: 120px 60px 80px;
+    position: relative; z-index: 2;
+  }
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--terracotta);
+    margin-bottom: 24px;
+    opacity: 0; transform: translateY(20px);
+    animation: fadeUp 0.8s ease 0.2s forwards;
+  }
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(56px, 6vw, 88px);
+    font-weight: 900; line-height: 0.95;
+    letter-spacing: -0.03em; color: var(--ink);
+    margin-bottom: 32px;
+    opacity: 0; transform: translateY(30px);
+    animation: fadeUp 0.9s ease 0.4s forwards;
+  }
+  .hero-name em {
+    font-style: italic; color: var(--terracotta);
+  }
+  .hero-desc {
+    font-size: 17px; line-height: 1.7;
+    color: var(--ink-light); max-width: 420px;
+    margin-bottom: 48px; font-weight: 300;
+    opacity: 0; transform: translateY(20px);
+    animation: fadeUp 0.8s ease 0.6s forwards;
+  }
+  .hero-desc strong { font-weight: 500; color: var(--ink); }
+  .hero-cta {
+    display: flex; gap: 20px; align-items: center;
+    opacity: 0; transform: translateY(20px);
+    animation: fadeUp 0.8s ease 0.8s forwards;
+  }
+  .btn-primary {
+    background: var(--ink); color: var(--cream);
+    padding: 16px 36px; border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px; font-weight: 500;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    text-decoration: none; cursor: none;
+    position: relative; overflow: hidden;
+    transition: transform 0.3s;
+  }
+  .btn-primary::before {
+    content: ''; position: absolute; inset: 0;
+    background: var(--terracotta);
+    transform: translateX(-101%);
+    transition: transform 0.4s cubic-bezier(0.7,0,0.3,1);
+  }
+  .btn-primary:hover::before { transform: translateX(0); }
+  .btn-primary:hover { transform: translateY(-2px); }
+  .btn-primary span { position: relative; z-index: 1; }
+  .btn-ghost {
+    color: var(--ink); font-size: 13px; font-weight: 500;
+    text-decoration: none; letter-spacing: 0.04em;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .btn-ghost::after {
+    content: '→'; transition: transform 0.3s;
+  }
+  .btn-ghost:hover::after { transform: translateX(6px); }
+
+  .hero-right {
+    position: relative; overflow: hidden;
+    opacity: 0; animation: fadeIn 1.2s ease 0.5s forwards;
+  }
+  .hero-bg-pattern {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(135deg, var(--terracotta) 0%, #8B3A1E 50%, var(--ink) 100%);
+  }
+  .hero-bg-pattern::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle at 30% 70%, rgba(184,150,46,0.3) 0%, transparent 50%),
+                      radial-gradient(circle at 80% 20%, rgba(255,255,255,0.08) 0%, transparent 40%);
+  }
+  .hero-stat-grid {
+    position: absolute; bottom: 60px; left: 40px; right: 40px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  }
+  .hero-stat {
+    background: rgba(253, 250, 245, 0.1);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 24px 20px;
+    opacity: 0; transform: translateY(20px);
+  }
+  .hero-stat:nth-child(1) { animation: fadeUp 0.7s ease 1.0s forwards; }
+  .hero-stat:nth-child(2) { animation: fadeUp 0.7s ease 1.2s forwards; }
+  .hero-stat:nth-child(3) { animation: fadeUp 0.7s ease 1.4s forwards; }
+  .hero-stat:nth-child(4) { animation: fadeUp 0.7s ease 1.6s forwards; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px; font-weight: 900;
+    color: var(--cream); line-height: 1;
+    margin-bottom: 6px;
+  }
+  .stat-label {
+    font-size: 12px; color: rgba(245,240,232,0.65);
+    font-weight: 400; letter-spacing: 0.04em;
+  }
+  .hero-scroll-hint {
+    position: absolute; bottom: 30px; left: 50%;
+    transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center;
+    gap: 8px; color: var(--dust-dark);
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0; animation: fadeIn 1s ease 2s forwards;
+  }
+  .scroll-line {
+    width: 1px; height: 50px; background: var(--dust-dark);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  /* ── MARQUEE ── */
+  .marquee-section {
+    padding: 20px 0;
+    background: var(--ink); overflow: hidden;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .marquee-track {
+    display: flex; gap: 60px; white-space: nowrap;
+    animation: marquee 20s linear infinite;
+  }
+  .marquee-item {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px; font-style: italic;
+    color: rgba(245,240,232,0.4); letter-spacing: 0.04em;
+    flex-shrink: 0;
+  }
+  .marquee-item span { color: var(--terracotta); margin: 0 12px; }
+
+  /* ── SECTION BASE ── */
+  section { padding: var(--section-gap) 60px; }
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--terracotta);
+    margin-bottom: 16px; display: block;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 700; line-height: 1.1;
+    letter-spacing: -0.02em; color: var(--ink);
+    margin-bottom: 60px;
+  }
+
+  /* ── ABOUT ── */
+  #about { background: var(--warm-white); }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px;
+    align-items: start;
+  }
+  .about-left { position: sticky; top: 100px; }
+  .about-portrait {
+    width: 100%; aspect-ratio: 3/4;
+    background: linear-gradient(160deg, var(--dust) 0%, var(--terracotta) 100%);
+    position: relative; overflow: hidden;
+  }
+  .about-portrait-text {
+    position: absolute; bottom: 24px; left: 24px; right: 24px;
+    font-family: 'Playfair Display', serif;
+    font-size: 13px; font-style: italic;
+    color: rgba(253,250,245,0.8); line-height: 1.5;
+  }
+  .about-portrait::before {
+    content: 'KS';
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -60%);
+    font-family: 'Playfair Display', serif;
+    font-size: 120px; font-weight: 900;
+    color: rgba(253,250,245,0.12); letter-spacing: -0.05em;
+  }
+  .about-right { padding-top: 8px; }
+  .about-intro {
+    font-size: 22px; line-height: 1.65; font-weight: 300;
+    color: var(--ink); margin-bottom: 40px;
+    letter-spacing: -0.01em;
+  }
+  .about-intro strong { font-weight: 600; }
+  .about-body {
+    font-size: 16px; line-height: 1.8;
+    color: var(--ink-light); margin-bottom: 40px; font-weight: 300;
+  }
+  .about-tags {
+    display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 40px;
+  }
+  .tag {
+    padding: 8px 18px;
+    border: 1px solid var(--dust-dark);
+    font-size: 12px; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--ink-light);
+    font-weight: 500;
+    transition: all 0.3s;
+  }
+  .tag:hover {
+    background: var(--ink); color: var(--cream);
+    border-color: var(--ink);
+  }
+
+  /* ── EXPERIENCE ── */
+  #experience { background: var(--cream); }
+  .exp-list { display: flex; flex-direction: column; gap: 0; }
+  .exp-item {
+    display: grid; grid-template-columns: 200px 1fr;
+    gap: 40px; padding: 48px 0;
+    border-bottom: 1px solid var(--dust);
+    position: relative; overflow: hidden;
+    transition: background 0.3s;
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease, background 0.3s;
+  }
+  .exp-item.visible { opacity: 1; transform: translateY(0); }
+  .exp-item::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 0;
+    background: var(--warm-white);
+    transition: width 0.4s cubic-bezier(0.7,0,0.3,1);
+    z-index: 0;
+  }
+  .exp-item:hover::before { width: 100%; }
+  .exp-meta { position: relative; z-index: 1; padding-top: 4px; }
+  .exp-period {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px; color: var(--dust-dark);
+    letter-spacing: 0.08em; margin-bottom: 8px;
+  }
+  .exp-company {
+    font-size: 13px; font-weight: 500;
+    color: var(--terracotta); letter-spacing: 0.02em;
+  }
+  .exp-content { position: relative; z-index: 1; }
+  .exp-role {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px; font-weight: 700;
+    color: var(--ink); margin-bottom: 16px;
+    letter-spacing: -0.01em; line-height: 1.2;
+  }
+  .exp-desc {
+    font-size: 15px; line-height: 1.75;
+    color: var(--ink-light); margin-bottom: 20px;
+    font-weight: 300; max-width: 640px;
+  }
+  .exp-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .exp-tag {
+    padding: 4px 12px; background: var(--dust);
+    font-size: 11px; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--ink-light);
+    font-weight: 500;
+  }
+
+  /* ── WORK / RESULTS ── */
+  #results { background: var(--ink); }
+  #results .section-title { color: var(--cream); }
+  #results .section-label { color: var(--terracotta-light); }
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+  .result-card {
+    background: rgba(255,255,255,0.04);
+    padding: 48px 36px;
+    border: 1px solid rgba(255,255,255,0.06);
+    position: relative; overflow: hidden;
+    transition: background 0.4s;
+    opacity: 0; transform: translateY(40px);
+    transition: opacity 0.6s ease, transform 0.6s ease, background 0.3s;
+  }
+  .result-card.visible { opacity: 1; transform: translateY(0); }
+  .result-card:hover { background: rgba(255,255,255,0.08); }
+  .result-card::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 2px;
+    background: var(--terracotta);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+  .result-card:hover::before { transform: scaleX(1); }
+  .result-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px; font-weight: 900;
+    color: var(--cream); line-height: 1;
+    margin-bottom: 8px; letter-spacing: -0.03em;
+  }
+  .result-num span { color: var(--terracotta); }
+  .result-label {
+    font-size: 15px; color: rgba(245,240,232,0.6);
+    font-weight: 300; line-height: 1.5; margin-bottom: 20px;
+  }
+  .result-client {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--terracotta-light);
+  }
+
+  /* ── BRANDS ── */
+  #brands { background: var(--warm-white); }
+  .brands-intro {
+    font-size: 18px; font-weight: 300; line-height: 1.7;
+    color: var(--ink-light); max-width: 600px; margin-bottom: 60px;
+  }
+  .brands-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px;
+    margin-bottom: 60px;
+  }
+  .brand-card {
+    background: var(--cream); padding: 36px 24px;
+    display: flex; flex-direction: column;
+    border: 1px solid var(--dust);
+    transition: all 0.3s; position: relative;
+    opacity: 0; transform: scale(0.96);
+    transition: opacity 0.5s ease, transform 0.5s ease, background 0.3s, border-color 0.3s;
+  }
+  .brand-card.visible { opacity: 1; transform: scale(1); }
+  .brand-card:hover {
+    background: var(--ink); border-color: var(--ink);
+  }
+  .brand-card:hover .brand-name { color: var(--cream); }
+  .brand-card:hover .brand-category { color: var(--dust); }
+  .brand-icon {
+    width: 40px; height: 40px; margin-bottom: 20px;
+    background: var(--terracotta); border-radius: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 16px; font-weight: 700; color: var(--cream);
+    transition: background 0.3s;
+  }
+  .brand-card:hover .brand-icon { background: var(--terracotta-light); }
+  .brand-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px; font-weight: 700;
+    color: var(--ink); margin-bottom: 6px;
+    transition: color 0.3s;
+  }
+  .brand-category {
+    font-size: 12px; color: var(--dust-dark);
+    text-transform: uppercase; letter-spacing: 0.08em;
+    font-weight: 500; transition: color 0.3s;
+  }
+
+  /* ── PROJECT (KAIRO) ── */
+  #project { background: var(--cream); }
+  .project-card {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+    background: var(--ink); padding: 70px;
+    position: relative; overflow: hidden;
+  }
+  .project-card::before {
+    content: '';
+    position: absolute; top: -100px; right: -100px;
+    width: 400px; height: 400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(196,96,58,0.2) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .project-left { position: relative; z-index: 1; }
+  .project-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(196,96,58,0.2); border: 1px solid var(--terracotta);
+    padding: 6px 16px; margin-bottom: 28px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--terracotta-light);
+  }
+  .project-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px; font-weight: 900;
+    color: var(--cream); margin-bottom: 24px;
+    line-height: 1; letter-spacing: -0.03em;
+  }
+  .project-name em { color: var(--terracotta); font-style: normal; }
+  .project-desc {
+    font-size: 16px; line-height: 1.75;
+    color: rgba(245,240,232,0.65); font-weight: 300;
+    margin-bottom: 36px;
+  }
+  .project-right { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 20px; }
+  .project-feature {
+    padding: 24px; border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.04);
+    transition: background 0.3s, border-color 0.3s;
+  }
+  .project-feature:hover { background: rgba(196,96,58,0.15); border-color: rgba(196,96,58,0.4); }
+  .feature-title {
+    font-size: 14px; font-weight: 600;
+    color: var(--cream); margin-bottom: 8px;
+    letter-spacing: 0.02em;
+  }
+  .feature-desc {
+    font-size: 13px; color: rgba(245,240,232,0.55);
+    line-height: 1.6; font-weight: 300;
+  }
+
+  /* ── SKILLS ── */
+  #skills { background: var(--warm-white); }
+  .skills-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 48px 80px;
+  }
+  .skill-group-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--terracotta);
+    margin-bottom: 20px;
+  }
+  .skill-item {
+    display: flex; justify-content: space-between;
+    align-items: center; padding: 14px 0;
+    border-bottom: 1px solid var(--dust);
+  }
+  .skill-name {
+    font-size: 15px; font-weight: 400; color: var(--ink);
+  }
+  .skill-bar {
+    width: 120px; height: 2px; background: var(--dust);
+    position: relative; overflow: hidden;
+  }
+  .skill-bar-fill {
+    position: absolute; left: 0; top: 0; height: 100%;
+    background: var(--terracotta); width: 0;
+    transition: width 1.2s cubic-bezier(0.7,0,0.3,1);
+  }
+  .skill-item.visible .skill-bar-fill { width: var(--pct); }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--ink); min-height: 80vh; display: flex; flex-direction: column; justify-content: center; }
+  #contact .section-label { color: var(--terracotta-light); }
+  .contact-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(48px, 6vw, 88px);
+    font-weight: 900; line-height: 0.95;
+    letter-spacing: -0.03em; color: var(--cream);
+    margin-bottom: 60px;
+  }
+  .contact-headline em { font-style: italic; color: var(--terracotta); }
+  .contact-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+    align-items: start;
+  }
+  .contact-left p {
+    font-size: 18px; color: rgba(245,240,232,0.6);
+    line-height: 1.7; font-weight: 300; margin-bottom: 40px;
+  }
+  .contact-links { display: flex; flex-direction: column; gap: 16px; }
+  .contact-link {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.08);
+    text-decoration: none; color: var(--cream);
+    transition: color 0.3s;
+    group: true;
+  }
+  .contact-link:hover { color: var(--terracotta); }
+  .contact-link-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; color: rgba(245,240,232,0.4);
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 4px; display: block;
+  }
+  .contact-link-value { font-size: 17px; font-weight: 400; }
+  .contact-link-arrow { font-size: 20px; transition: transform 0.3s; }
+  .contact-link:hover .contact-link-arrow { transform: translate(4px, -4px); }
+  .contact-right { padding-top: 8px; }
+  .availability-box {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 40px;
+  }
+  .avail-dot {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--sage);
+    margin-bottom: 20px;
+  }
+  .avail-dot::before {
+    content: ''; width: 8px; height: 8px; border-radius: 50%;
+    background: var(--sage);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  .avail-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px; font-weight: 700;
+    color: var(--cream); margin-bottom: 16px;
+  }
+  .avail-desc {
+    font-size: 15px; color: rgba(245,240,232,0.5);
+    line-height: 1.7; font-weight: 300; margin-bottom: 30px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink); padding: 30px 60px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-copy {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; color: rgba(245,240,232,0.25);
+    letter-spacing: 0.08em;
+  }
+  .footer-back {
+    font-size: 12px; color: rgba(245,240,232,0.3);
+    text-decoration: none; letter-spacing: 0.06em;
+    text-transform: uppercase; font-weight: 500;
+    transition: color 0.3s;
+  }
+  .footer-back:hover { color: var(--terracotta); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.2); }
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 20px 24px; }
+    nav.scrolled { padding: 14px 24px; }
+    .nav-links { display: none; }
+    #hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .hero-left { padding: 100px 24px 60px; }
+    section { padding: 80px 24px; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .about-left { position: relative; top: auto; }
+    .results-grid { grid-template-columns: 1fr 1fr; }
+    .brands-grid { grid-template-columns: 1fr 1fr; }
+    .project-card { grid-template-columns: 1fr; padding: 40px 28px; }
+    .skills-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-follower" id="cursorFollower"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#hero" class="nav-logo">KS</a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#results">Results</a>
+    <a href="#brands">Brands</a>
+    <a href="#project">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Digital Marketing Manager</div>
+    <h1 class="hero-name">
+      Komal<br><em>Singhania</em>
+    </h1>
+    <p class="hero-desc">
+      <strong>6 years</strong> of building campaigns that move numbers — across insurance, retail, FMCG, and events. I use <strong>AI every day</strong> to work smarter, faster, and more creatively.
+    </p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn-primary"><span>Let's Work Together</span></a>
+      <a href="#experience" class="btn-ghost">See My Work</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-bg-pattern"></div>
+    <div class="hero-stat-grid">
+      <div class="hero-stat">
+        <div class="stat-num" data-count="6">0</div>
+        <div class="stat-label">Years of Experience</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-num" data-count="25">0<span style="font-size:28px">%</span></div>
+        <div class="stat-label">B2B Lead Growth</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-num" data-count="68">0<span style="font-size:28px">%</span></div>
+        <div class="stat-label">Sales Uplift for Whey91</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-num" data-count="40">0<span style="font-size:28px">%</span></div>
+        <div class="stat-label">SEO Visibility Boost</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll-hint">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <span class="marquee-item">Brand Strategy <span>✦</span></span>
+    <span class="marquee-item">AI-Driven Marketing <span>✦</span></span>
+    <span class="marquee-item">B2B Lead Generation <span>✦</span></span>
+    <span class="marquee-item">Campaign Leadership <span>✦</span></span>
+    <span class="marquee-item">Influencer Marketing <span>✦</span></span>
+    <span class="marquee-item">Google Analytics <span>✦</span></span>
+    <span class="marquee-item">SEO Optimization <span>✦</span></span>
+    <span class="marquee-item">Kairo AI App <span>✦</span></span>
+    <span class="marquee-item">Brand Strategy <span>✦</span></span>
+    <span class="marquee-item">AI-Driven Marketing <span>✦</span></span>
+    <span class="marquee-item">B2B Lead Generation <span>✦</span></span>
+    <span class="marquee-item">Campaign Leadership <span>✦</span></span>
+    <span class="marquee-item">Influencer Marketing <span>✦</span></span>
+    <span class="marquee-item">Google Analytics <span>✦</span></span>
+    <span class="marquee-item">SEO Optimization <span>✦</span></span>
+    <span class="marquee-item">Kairo AI App <span>✦</span></span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <span class="section-label">01 — Who I Am</span>
+  <div class="about-grid">
+    <div class="about-left reveal">
+      <div class="about-portrait">
+        <div class="about-portrait-text">"Strategy first. Execution always."</div>
+      </div>
+    </div>
+    <div class="about-right">
+      <p class="about-intro reveal">
+        I am a <strong>digital marketing manager</strong> who builds campaigns with a clear purpose — not just to look good, but to grow brands and generate real results.
+      </p>
+      <p class="about-body reveal">
+        Over 6 years I have worked across B2B and B2C, managing senior client accounts, advising leadership on strategy, and executing campaigns for some of India's most recognisable brands. I have sat in boardrooms presenting strategy and been in the weeds of a campaign at midnight. I am equally good at both.
+      </p>
+      <p class="about-body reveal">
+        What makes me different: I use AI tools every day — not as a talking point, but as a real part of how I research, write briefs, build strategy, and report results. I built Kairo, an AI workflow app, at a Google hackathon in Hyderabad. AI is not something I am learning. It is how I already work.
+      </p>
+      <div class="about-tags reveal">
+        <span class="tag">Brand Strategy</span>
+        <span class="tag">AI Marketing</span>
+        <span class="tag">B2B Campaigns</span>
+        <span class="tag">Influencer Marketing</span>
+        <span class="tag">SEO</span>
+        <span class="tag">Client Consulting</span>
+        <span class="tag">Go-to-Market</span>
+        <span class="tag">Google Analytics</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <span class="section-label">02 — Experience</span>
+  <h2 class="section-title">Where I Have<br>Made an Impact</h2>
+  <div class="exp-list">
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-period">Feb 2025 — Present</div>
+        <div class="exp-company">AInsurCo, London</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Digital Marketing Manager</div>
+        <p class="exp-desc">Leading digital marketing for a B2B insurance software portfolio. Redesigned campaign frameworks, grew high-quality leads by 25%, and act as a strategic advisor to senior leadership on brand positioning and pipeline strategy. Integrated AI tools across the full workflow — from briefing to reporting.</p>
+        <div class="exp-tags">
+          <span class="exp-tag">B2B</span>
+          <span class="exp-tag">LinkedIn Campaigns</span>
+          <span class="exp-tag">AI Workflow</span>
+          <span class="exp-tag">Pipeline Strategy</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-period">Feb 2023 — Jan 2025</div>
+        <div class="exp-company">Anvis Digital, Mumbai</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Account Manager &amp; Executive, Digital and Brand Strategy</div>
+        <p class="exp-desc">Managed 6 premium brand accounts across luxury retail, FMCG, and lifestyle. Delivered 100% of O2O activation targets for Phoenix Palladium and Zara. Grew Whey91 sales by 68% with AI-assisted influencer strategy. Grew local SEO for R&amp;B by 40% across 20-plus store locations. Executed celebrity campaigns featuring Jacqueline Fernandez and Vaani Kapoor.</p>
+        <div class="exp-tags">
+          <span class="exp-tag">Account Management</span>
+          <span class="exp-tag">O2O Campaigns</span>
+          <span class="exp-tag">Influencer Marketing</span>
+          <span class="exp-tag">SEO</span>
+          <span class="exp-tag">Luxury Retail</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-period">Jun 2020 — Feb 2023</div>
+        <div class="exp-company">AInsurCo, London</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Digital Marketing Executive</div>
+        <p class="exp-desc">Built social media strategies grounded in consumer research and audience segmentation that doubled inbound lead generation and grew website traffic by 35%. Became a core contributor to the team's analytics and reporting processes.</p>
+        <div class="exp-tags">
+          <span class="exp-tag">Social Media</span>
+          <span class="exp-tag">Lead Generation</span>
+          <span class="exp-tag">Analytics</span>
+          <span class="exp-tag">Content Strategy</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section id="results">
+  <span class="section-label">03 — Results</span>
+  <h2 class="section-title">Numbers That<br>Tell the Story</h2>
+  <div class="results-grid">
+    <div class="result-card">
+      <div class="result-num"><span>25</span>%</div>
+      <div class="result-label">Increase in high-quality B2B leads by redesigning campaign frameworks</div>
+      <div class="result-client">AInsurCo</div>
+    </div>
+    <div class="result-card">
+      <div class="result-num"><span>68</span>%</div>
+      <div class="result-label">Growth in direct-to-consumer sales using influencer and AI-assisted creative strategy</div>
+      <div class="result-client">Whey91</div>
+    </div>
+    <div class="result-card">
+      <div class="result-num"><span>40</span>%</div>
+      <div class="result-label">Improvement in local search visibility across 20+ store locations</div>
+      <div class="result-client">R&amp;B Footwear</div>
+    </div>
+    <div class="result-card">
+      <div class="result-num"><span>2</span>x</div>
+      <div class="result-label">Inbound lead generation through data-driven social media and audience segmentation</div>
+      <div class="result-client">AInsurCo</div>
+    </div>
+    <div class="result-card">
+      <div class="result-num"><span>100</span>%</div>
+      <div class="result-label">Campaign activation targets achieved for O2O brand campaigns across multiple markets</div>
+      <div class="result-client">Phoenix Palladium + Zara</div>
+    </div>
+    <div class="result-card">
+      <div class="result-num"><span>35</span>%</div>
+      <div class="result-label">Increase in website traffic through content restructuring and refined campaign targeting</div>
+      <div class="result-client">AInsurCo</div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<section id="brands">
+  <span class="section-label">04 — Brands</span>
+  <h2 class="section-title">Brands I Have<br>Worked With</h2>
+  <p class="brands-intro">From luxury retail to FMCG and insurance, I have built and managed campaigns for brands across India and the UK.</p>
+  <div class="brands-grid">
+    <div class="brand-card">
+      <div class="brand-icon">PP</div>
+      <div class="brand-name">Phoenix Palladium</div>
+      <div class="brand-category">Luxury Retail</div>
+    </div>
+    <div class="brand-card">
+      <div class="brand-icon">ZA</div>
+      <div class="brand-name">Zara</div>
+      <div class="brand-category">Fashion Retail</div>
+    </div>
+    <div class="brand-card">
+      <div class="brand-icon">W9</div>
+      <div class="brand-name">Whey91</div>
+      <div class="brand-category">Health and Wellness</div>
+    </div>
+    <div class="brand-card">
+      <div class="brand-icon">RB</div>
+      <div class="brand-name">R&amp;B Footwear</div>
+      <div class="brand-category">Fashion Retail</div>
+    </div>
+    <div class="brand-card">
+      <div class="brand-icon">AI</div>
+      <div class="brand-name">AInsurCo</div>
+      <div class="brand-category">Insurance Tech</div>
+    </div>
+    <div class="brand-card">
+      <div class="brand-icon">BL</div>
+      <div class="brand-name">Boutique Living</div>
+      <div class="brand-category">Home and Lifestyle</div>
+    </div>
+    <div class="brand-card">
+      <div class="brand-icon">FC</div>
+      <div class="brand-name">FOCE Watches</div>
+      <div class="brand-category">Luxury Watches</div>
+    </div>
+    <div class="brand-card">
+      <div class="brand-icon">PM</div>
+      <div class="brand-name">Phoenix Marketcity</div>
+      <div class="brand-category">Retail and Events</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECT -->
+<section id="project">
+  <span class="section-label">05 — Featured Project</span>
+  <h2 class="section-title">Built at Google</h2>
+  <div class="project-card reveal">
+    <div class="project-left">
+      <div class="project-badge">✦ Google Build and Blog Marathon, Hyderabad</div>
+      <div class="project-name"><em>Kairo</em></div>
+      <p class="project-desc">
+        Kairo is an AI-powered SaaS app that converts Gmail conversations into structured task workflows automatically. Built using Google Gemini AI, it extracts tasks from emails, assigns priority levels, and organises them in a Kanban dashboard — saving knowledge workers 2 to 3 hours per week in manual task tracking.
+      </p>
+      <div class="about-tags">
+        <span class="tag" style="border-color:rgba(245,240,232,0.2);color:rgba(245,240,232,0.6)">Google Gemini AI</span>
+        <span class="tag" style="border-color:rgba(245,240,232,0.2);color:rgba(245,240,232,0.6)">SaaS</span>
+        <span class="tag" style="border-color:rgba(245,240,232,0.2);color:rgba(245,240,232,0.6)">Product Strategy</span>
+        <span class="tag" style="border-color:rgba(245,240,232,0.2);color:rgba(245,240,232,0.6)">Go-to-Market</span>
+      </div>
+    </div>
+    <div class="project-right">
+      <div class="project-feature">
+        <div class="feature-title">AI Email-to-Task Conversion</div>
+        <div class="feature-desc">Google Gemini AI reads your inbox and automatically extracts action items, deadlines, and priorities from email threads.</div>
+      </div>
+      <div class="project-feature">
+        <div class="feature-title">Smart Priority Detection</div>
+        <div class="feature-desc">Understands urgency from natural language — "ASAP", "by Friday", "end of month" — and assigns priority levels automatically.</div>
+      </div>
+      <div class="project-feature">
+        <div class="feature-title">Kanban Dashboard</div>
+        <div class="feature-desc">All tasks surfaced in a drag-and-drop board with filters, search, and real-time status updates.</div>
+      </div>
+      <div class="project-feature">
+        <div class="feature-title">My Role: Strategy and Positioning</div>
+        <div class="feature-desc">Led product positioning, target user definition, and go-to-market narrative for the product during the hackathon.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <span class="section-label">06 — Skills</span>
+  <h2 class="section-title">What I Bring<br>to the Table</h2>
+  <div class="skills-grid">
+    <div>
+      <div class="skill-group-title">Strategy and Marketing</div>
+      <div class="skill-item" data-pct="95%">
+        <span class="skill-name">Brand Strategy</span>
+        <div class="skill-bar"><div class="skill-bar-fill" style="--pct:95%"></div></div>
+      </div>
+      <div class="skill-item" data-pct="90%">
+        <span class="skill-name">Campaign Planning</span>
+        <div class="skill-bar"><div class="skill-bar-fill" style="--pct:90%"></div></div>
+      </div>
+      <div class="skill-item" data-pct="85%">
+        <span class="skill-name">Go-to-Market Strategy</span>
+        <div class="skill-bar"><div class="skill-bar-fill" style="--pct:85%"></div></div>
+      </div>
+      <div class="skill-item" data-pct="88%">
+        <span class="skill-name">B2B Lead Generation</span>
+        <div class="skill-bar"><div class="skill-bar-fill" style="--pct:88%"></div></div>
+      </div>
+      <div class="skill-item" data-pct="92%">
+        <span class="skill-name">Influencer Marketing</span>
+        <div class="skill-bar"><div class="skill-bar-fill" style="--pct:92%"></div></div>
+      </div>
+    </div>
+    <div>
+      <div class="skill-group-title">Digital and Tools</div>
+      <div class="skill-item" data-pct="90%">
+        <span class="skill-name">Google Analytics (GA4)</span>
+        <div class="skill-bar"><div class="skill-bar-fill" style="--pct:90%"></div></div>
+      </div>
+      <div class="skill-item" data-pct="85%">
+        <span class="skill-name">SEO and Local Search</span>
+        <div class="skill-bar"><div class="skill-bar-fill" style="--pct:85%"></div></div>
+      </div>
+      <div class="skill-item" data-pct="88%">
+        <span class="skill-name">LinkedIn Marketing</span>
+        <div class="skill-bar"><div class="skill-bar-fill" style="--pct:88%"></div></div>
+      </div>
+      <div class="skill-item" data-pct="95%">
+        <span class="skill-name">AI Tools (Daily Use)</span>
+        <div class="skill-bar"><div class="skill-bar-fill" style="--pct:95%"></div></div>
+      </div>
+      <div class="skill-item" data-pct="80%">
+        <span class="skill-name">Meta Ads Manager</span>
+        <div class="skill-bar"><div class="skill-bar-fill" style="--pct:80%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <span class="section-label">07 — Get in Touch</span>
+  <h2 class="contact-headline">Let's Build<br>Something <em>Great</em></h2>
+  <div class="contact-grid">
+    <div class="contact-left reveal">
+      <p>Open to full-time roles, consulting projects, and interesting collaborations in digital marketing, brand strategy, and AI-driven campaigns. Based in India. Open to relocate.</p>
+      <div class="contact-links">
+        <a href="mailto:komal.singhania1222@gmail.com" class="contact-link">
+          <div>
+            <span class="contact-link-label">Email</span>
+            <span class="contact-link-value">komal.singhania1222@gmail.com</span>
+          </div>
+          <span class="contact-link-arrow">↗</span>
+        </a>
+        <a href="https://linkedin.com/in/komalsinghania" target="_blank" class="contact-link">
+          <div>
+            <span class="contact-link-label">LinkedIn</span>
+            <span class="contact-link-value">linkedin.com/in/komalsinghania</span>
+          </div>
+          <span class="contact-link-arrow">↗</span>
+        </a>
+      </div>
+    </div>
+    <div class="contact-right reveal">
+      <div class="availability-box">
+        <div class="avail-dot">Available for Opportunities</div>
+        <div class="avail-title">Open to Roles In</div>
+        <p class="avail-desc">Digital Marketing Manager, Brand Manager, Marketing Strategist, Agency Account Manager, Client Services Lead, Growth Marketing roles across India and globally.</p>
+        <div class="about-tags">
+          <span class="tag" style="border-color:rgba(245,240,232,0.2);color:rgba(245,240,232,0.5);font-size:11px">Full-Time</span>
+          <span class="tag" style="border-color:rgba(245,240,232,0.2);color:rgba(245,240,232,0.5);font-size:11px">Consulting</span>
+          <span class="tag" style="border-color:rgba(245,240,232,0.2);color:rgba(245,240,232,0.5);font-size:11px">Remote</span>
+          <span class="tag" style="border-color:rgba(245,240,232,0.2);color:rgba(245,240,232,0.5);font-size:11px">Relocate</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-copy">© 2025 Komal Singhania. All rights reserved.</span>
+  <a href="#hero" class="footer-back">Back to Top ↑</a>
+</footer>
+
+<script>
+  // ── CURSOR
+  const cursor = document.getElementById('cursor');
+  const follower = document.getElementById('cursorFollower');
+  let mx = 0, my = 0, fx = 0, fy = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = mx+'px'; cursor.style.top = my+'px'; });
+  function animFollower() {
+    fx += (mx - fx) * 0.12; fy += (my - fy) * 0.12;
+    follower.style.left = fx+'px'; follower.style.top = fy+'px';
+    requestAnimationFrame(animFollower);
+  }
+  animFollower();
+  document.querySelectorAll('a, button, .brand-card, .result-card').forEach(el => {
+    el.addEventListener('mouseenter', () => { cursor.style.transform = 'translate(-50%,-50%) scale(2)'; follower.style.transform = 'translate(-50%,-50%) scale(1.5)'; });
+    el.addEventListener('mouseleave', () => { cursor.style.transform = 'translate(-50%,-50%) scale(1)'; follower.style.transform = 'translate(-50%,-50%) scale(1)'; });
+  });
+
+  // ── NAV SCROLL
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); });
+
+  // ── INTERSECTION OBSERVER for scroll reveals
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.exp-item, .result-card, .brand-card, .skill-item').forEach(el => revealObs.observe(el));
+
+  // ── REVEAL elements
+  const revealObs2 = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+        }, 100);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+    revealObs2.observe(el);
+  });
+
+  // ── STAGGERED brand cards
+  const brandObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const cards = document.querySelectorAll('.brand-card');
+        cards.forEach((c, i) => setTimeout(() => c.classList.add('visible'), i * 80));
+        brandObs.disconnect();
+      }
+    });
+  }, { threshold: 0.1 });
+  const brandsSection = document.querySelector('#brands .brands-grid');
+  if (brandsSection) brandObs.observe(brandsSection);
+
+  // ── STAGGERED result cards
+  const resultObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        document.querySelectorAll('.result-card').forEach((c, i) => setTimeout(() => c.classList.add('visible'), i * 100));
+        resultObs.disconnect();
+      }
+    });
+  }, { threshold: 0.1 });
+  const resultsGrid = document.querySelector('.results-grid');
+  if (resultsGrid) resultObs.observe(resultsGrid);
+
+  // ── COUNT-UP animation for hero stats
+  function countUp(el) {
+    const target = parseInt(el.dataset.count);
+    const suffix = el.querySelector('span') ? el.querySelector('span').outerHTML : '';
+    let count = 0;
+    const step = Math.ceil(target / 40);
+    const timer = setInterval(() => {
+      count = Math.min(count + step, target);
+      el.innerHTML = count + suffix;
+      if (count >= target) clearInterval(timer);
+    }, 30);
+  }
+  const heroObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        document.querySelectorAll('[data-count]').forEach(el => countUp(el));
+        heroObs.disconnect();
+      }
+    });
+  }, { threshold: 0.5 });
+  const heroStats = document.querySelector('.hero-stat-grid');
+  if (heroStats) heroObs.observe(heroStats);
+
+  // ── SMOOTH scroll for nav links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>
