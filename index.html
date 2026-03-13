@@ -6,7 +6,7 @@
 <title>Komal Singhania — Digital Marketing Manager</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 <style>
   :root {
     --black: #080808;
@@ -1006,32 +1006,74 @@
   }
   .article-card:hover { border-color: var(--border); }
   .article-card:hover .article-read-more { color: var(--gold-light); }
+  /* ── Blog card banners (Option F: Stripe + Ghost Letter) ── */
   .article-thumb {
     aspect-ratio: 16/9;
-    background: linear-gradient(135deg, var(--black-mid), var(--black-soft));
-    display: flex;
-    align-items: center;
-    justify-content: center;
     position: relative;
     overflow: hidden;
   }
-  .article-thumb::after {
-    content: '';
+  .article-thumb.f-gold  { background: #0c0900; }
+  .article-thumb.f-green { background: #000c05; }
+  .article-thumb.f-blue  { background: #05000c; }
+  .thumb-ghost {
     position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(to right, var(--gold), transparent);
-  }
-  .article-thumb-text {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 2rem;
-    font-weight: 300;
-    color: var(--gold);
-    opacity: 0.18;
-    letter-spacing: 0.1em;
-    text-align: center;
-    padding: 20px;
+    font-size: 160px;
+    font-weight: 600;
+    line-height: 1;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.06;
+    letter-spacing: -8px;
+    pointer-events: none;
+    user-select: none;
   }
+  .f-gold  .thumb-ghost { color: #c9a84c; }
+  .f-green .thumb-ghost { color: #4cc882; }
+  .f-blue  .thumb-ghost { color: #8c9eff; }
+  .thumb-stripe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+    display: flex; flex-direction: column;
+  }
+  .thumb-stripe span { flex: 1; display: block; }
+  .f-gold  .thumb-stripe span:nth-child(1) { background: rgba(201,168,76,0.7); }
+  .f-gold  .thumb-stripe span:nth-child(2) { background: rgba(201,168,76,0.28); }
+  .f-gold  .thumb-stripe span:nth-child(3) { background: rgba(201,168,76,0.08); }
+  .f-green .thumb-stripe span:nth-child(1) { background: rgba(76,200,130,0.7); }
+  .f-green .thumb-stripe span:nth-child(2) { background: rgba(76,200,130,0.28); }
+  .f-green .thumb-stripe span:nth-child(3) { background: rgba(76,200,130,0.08); }
+  .f-blue  .thumb-stripe span:nth-child(1) { background: rgba(120,140,255,0.7); }
+  .f-blue  .thumb-stripe span:nth-child(2) { background: rgba(120,140,255,0.28); }
+  .f-blue  .thumb-stripe span:nth-child(3) { background: rgba(120,140,255,0.08); }
+  .thumb-inner {
+    position: absolute;
+    inset: 0;
+    padding: 20px 24px 20px 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .thumb-top { display: flex; align-items: center; gap: 10px; }
+  .thumb-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+  .f-gold  .thumb-dot { background: #c9a84c; }
+  .f-green .thumb-dot { background: #4cc882; }
+  .f-blue  .thumb-dot { background: #8c9eff; }
+  .thumb-label { font-size: 9px; letter-spacing: 4px; text-transform: uppercase; }
+  .f-gold  .thumb-label { color: rgba(201,168,76,0.65); }
+  .f-green .thumb-label { color: rgba(76,200,130,0.65); }
+  .f-blue  .thumb-label { color: rgba(120,140,255,0.65); }
+  .thumb-headline { font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 400; line-height: 1.2; color: #f0e8d8; }
+  .thumb-headline em { font-style: italic; }
+  .f-gold  .thumb-headline em { color: #c9a84c; }
+  .f-green .thumb-headline em { color: #4cc882; }
+  .f-blue  .thumb-headline em { color: #8c9eff; }
+  .thumb-bottom { font-family: 'Space Mono', monospace; font-size: 8px; letter-spacing: 2px; text-transform: uppercase; }
+  .f-gold  .thumb-bottom { color: rgba(201,168,76,0.28); }
+  .f-green .thumb-bottom { color: rgba(76,200,130,0.28); }
+  .f-blue  .thumb-bottom { color: rgba(120,140,255,0.28); }
   .article-content {
     padding: 30px 28px;
   }
@@ -1680,8 +1722,14 @@
   <h2 class="section-title">Thinking Out<br><em>Loud</em></h2>
   <div class="blog-grid">
     <div class="article-card reveal">
-      <div class="article-thumb">
-        <div class="article-thumb-text">AI ×<br>Marketing</div>
+      <div class="article-thumb f-gold">
+        <div class="thumb-ghost">AI</div>
+        <div class="thumb-stripe"><span></span><span></span><span></span></div>
+        <div class="thumb-inner">
+          <div class="thumb-top"><div class="thumb-dot"></div><div class="thumb-label">AI Strategy</div></div>
+          <div class="thumb-headline">AI <em>&times;</em><br>Marketing</div>
+          <div class="thumb-bottom">01 — Influencer · Automation</div>
+        </div>
       </div>
       <div class="article-content">
         <div class="article-tag">AI Strategy</div>
@@ -1691,8 +1739,14 @@
       </div>
     </div>
     <div class="article-card reveal reveal-delay-2">
-      <div class="article-thumb">
-        <div class="article-thumb-text">B2B<br>Leads</div>
+      <div class="article-thumb f-green">
+        <div class="thumb-ghost">B2B</div>
+        <div class="thumb-stripe"><span></span><span></span><span></span></div>
+        <div class="thumb-inner">
+          <div class="thumb-top"><div class="thumb-dot"></div><div class="thumb-label">Lead Generation</div></div>
+          <div class="thumb-headline">B2B <em>&times;</em><br>LinkedIn</div>
+          <div class="thumb-bottom">02 — HQL · Targeting</div>
+        </div>
       </div>
       <div class="article-content">
         <div class="article-tag">Lead Generation</div>
@@ -1702,8 +1756,14 @@
       </div>
     </div>
     <div class="article-card reveal reveal-delay-4">
-      <div class="article-thumb">
-        <div class="article-thumb-text">GTM<br>Strategy</div>
+      <div class="article-thumb f-blue">
+        <div class="thumb-ghost">GTM</div>
+        <div class="thumb-stripe"><span></span><span></span><span></span></div>
+        <div class="thumb-inner">
+          <div class="thumb-top"><div class="thumb-dot"></div><div class="thumb-label">Product Marketing</div></div>
+          <div class="thumb-headline">GTM <em>&times;</em><br>Strategy</div>
+          <div class="thumb-bottom">03 — Strategy · 48hrs</div>
+        </div>
       </div>
       <div class="article-content">
         <div class="article-tag">Product Marketing</div>
