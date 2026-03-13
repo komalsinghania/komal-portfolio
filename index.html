@@ -6,7 +6,8 @@
 <title>Komal Singhania — Digital Marketing Manager</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
 <style>
   :root {
     --black: #080808;
@@ -1459,6 +1460,53 @@
   </div>
 </div>
 
+<!-- KAIRO PROJECT -->
+<section id="kairo">
+  <div class="section-label" style="color: var(--gold); letter-spacing: 0.25em;">🏆 Google Project — Build & Blog Marathon</div>
+  <h2 class="section-title">Kairo — <em>Where I Build,<br>Not Just Market</em></h2>
+  <div class="kairo-inner">
+    <div class="kairo-visual reveal">
+      <div class="kairo-badge">Google Build & Blog Marathon</div>
+      <div class="kairo-logo-text">KAIRO</div>
+      <div class="kairo-sub">AI-powered productivity</div>
+    </div>
+    <div class="kairo-details reveal reveal-delay-2">
+      <div class="section-label" style="margin-bottom: 0;">Hyderabad, 2024</div>
+      <h3>Kairo</h3>
+      <div class="kairo-powered">Powered by Gemini AI</div>
+      <p class="kairo-desc">Built at Google's Build and Blog Marathon in Hyderabad — a 48-hour sprint where I was the marketer on a product team. Kairo <strong>converts Gmail threads into structured task workflows</strong> using Gemini AI, saving knowledge workers 2–3 hours per week by eliminating the mental overhead of email-to-action translation.</p>
+      <div class="kairo-stats">
+        <div class="kairo-stat">
+          <div class="kairo-stat-num">2–3 hrs</div>
+          <div class="kairo-stat-label">Saved per week</div>
+        </div>
+        <div class="kairo-stat">
+          <div class="kairo-stat-num">48 hrs</div>
+          <div class="kairo-stat-label">Build sprint</div>
+        </div>
+      </div>
+      <div class="kairo-role-list">
+        <span class="metric-tag">Product Positioning</span>
+        <span class="metric-tag">Go-to-Market Strategy</span>
+        <span class="metric-tag">User Research</span>
+        <span class="metric-tag">Gemini AI</span>
+      </div>
+      <div class="kairo-links">
+        <a href="https://medium.com/@komal.singhania1222/kairo-the-ai-that-remembers-everything-so-you-dont-have-to-ee7ebcd88bda" target="_blank" rel="noopener" class="kairo-btn kairo-btn-outline">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          Read the Blog
+        </a>
+        <a href="https://www.youtube.com/watch?v=Evc3rX9Ag-s" target="_blank" rel="noopener" class="kairo-btn kairo-btn-solid">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.615 3.184C18.405 2.842 12 2.842 12 2.842s-6.405 0-7.615.342A2.493 2.493 0 002.635 4.93C2.293 6.14 2.293 12 2.293 12s0 5.86.342 7.07a2.493 2.493 0 001.75 1.748C5.595 21.158 12 21.158 12 21.158s6.405 0 7.615-.34a2.493 2.493 0 001.75-1.748C21.707 17.86 21.707 12 21.707 12s0-5.86-.342-7.07a2.493 2.493 0 00-1.75-1.746zM9.75 15.568V8.432L15.818 12 9.75 15.568z"/></svg>
+          Watch Demo
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
 
 <section id="curious-kalakar" style="border-top: 1px solid rgba(201,168,76,0.12);">
   <div class="section-label">Creative Venture</div>
@@ -1656,5 +1704,116 @@
     </div>
   </div>
 </section>
+<script>
+// Custom cursor
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+const glow = document.getElementById('glowAccent');
+let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+
+document.addEventListener('mousemove', e => {
+  mouseX = e.clientX; mouseY = e.clientY;
+  cursor.style.left = mouseX + 'px';
+  cursor.style.top = mouseY + 'px';
+  glow.style.left = (mouseX - 250) + 'px';
+  glow.style.top = (mouseY - 250) + 'px';
+});
+
+function animateRing() {
+  ringX += (mouseX - ringX) * 0.12;
+  ringY += (mouseY - ringY) * 0.12;
+  ring.style.left = ringX + 'px';
+  ring.style.top = ringY + 'px';
+  requestAnimationFrame(animateRing);
+}
+animateRing();
+
+document.querySelectorAll('a, button, .highlight-item, .testimonial-card, .article-card, .brand-cell, .stat-item').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    cursor.style.width = '18px';
+    cursor.style.height = '18px';
+    ring.style.width = '50px';
+    ring.style.height = '50px';
+  });
+  el.addEventListener('mouseleave', () => {
+    cursor.style.width = '10px';
+    cursor.style.height = '10px';
+    ring.style.width = '36px';
+    ring.style.height = '36px';
+  });
+});
+
+// Nav scroll
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 60) navbar.classList.add('scrolled');
+  else navbar.classList.remove('scrolled');
+});
+
+// Parallax hero
+const heroPhoto = document.getElementById('heroPhoto');
+const heroOverlayCenter = document.getElementById('heroOverlayCenter');
+window.addEventListener('scroll', () => {
+  const scrolled = window.scrollY;
+  if (scrolled < window.innerHeight) {
+    heroPhoto.style.transform = `translateY(${scrolled * 0.25}px)`;
+    // Deepen center vignette as user scrolls
+    const overlayOpacity = Math.min(scrolled / 300, 0.7);
+    if (heroOverlayCenter) heroOverlayCenter.style.opacity = overlayOpacity;
+  }
+});
+
+// Scroll reveal — only animate when JS is running
+document.body.classList.add('js-loaded');
+const revealEls = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+revealEls.forEach(el => revealObserver.observe(el));
+
+// Testimonial read more toggle
+document.querySelectorAll('.testimonial-read-more').forEach(btn => {
+  const text = btn.previousElementSibling;
+  btn.addEventListener('click', () => {
+    const isExpanded = text.classList.toggle('expanded');
+    btn.textContent = isExpanded ? 'Read less' : 'Read more';
+    btn.classList.toggle('open', isExpanded);
+  });
+});
+
+// Count-up animation
+const countUpObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const target = parseInt(el.getAttribute('data-target'));
+      if (!target || el.dataset.counted) return;
+      el.dataset.counted = 'true';
+      const suffix = el.querySelector('span') ? el.querySelector('span').textContent : '';
+      let current = 0;
+      const duration = 1800;
+      const steps = 60;
+      const increment = target / steps;
+      const interval = duration / steps;
+      el.innerHTML = '0<span>' + suffix + '</span>';
+      const timer = setInterval(() => {
+        current = Math.min(current + increment, target);
+        el.innerHTML = Math.floor(current) + '<span>' + suffix + '</span>';
+        if (current >= target) clearInterval(timer);
+      }, interval);
+      countUpObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.stat-number[data-target]').forEach(el => {
+  countUpObserver.observe(el);
+});
+</script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 </body>
 </html>
