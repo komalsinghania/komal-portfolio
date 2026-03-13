@@ -117,47 +117,44 @@
 
   /* HERO */
   #hero {
-    height: 100vh;
+    min-height: 100vh;
     position: relative;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
     overflow: hidden;
+    background-color: #080808;
   }
   .hero-photo {
-    position: absolute;
-    inset: 0;
+    position: relative;
+    width: 100%;
+    flex-shrink: 0;
     background-color: #0a0608;
   }
   .hero-photo-img {
-    position: absolute;
-    inset: 0;
+    display: block;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 15%;
+    height: auto;
     opacity: 1;
     filter: contrast(1.02) saturate(0.9);
   }
   .hero-overlay-bottom {
     position: absolute;
-    inset: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 35%;
     background: linear-gradient(
       to bottom,
-      rgba(8,8,8,0.08) 0%,
-      rgba(8,8,8,0.05) 35%,
-      rgba(8,8,8,0.55) 70%,
+      rgba(8,8,8,0.0) 0%,
+      rgba(8,8,8,0.6) 55%,
+      rgba(8,8,8,0.92) 80%,
       rgba(8,8,8,1) 100%
     );
     pointer-events: none;
   }
   .hero-overlay-center {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at center, rgba(8,8,8,0) 0%, rgba(8,8,8,0.5) 100%);
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.5s;
+    display: none;
   }
   .hero-grain {
     position: absolute;
@@ -171,8 +168,10 @@
     position: relative;
     z-index: 2;
     text-align: center;
-    padding: 0 40px;
-    max-width: 860px;
+    padding: 52px 40px 72px;
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
     opacity: 0;
     transform: translateY(24px);
     animation: heroTextReveal 1.1s 1.8s cubic-bezier(0.22,1,0.36,1) forwards;
@@ -260,8 +259,8 @@
 
   .hero-scroll {
     position: absolute;
-    bottom: 40px;
-    right: 60px;
+    bottom: 24px;
+    right: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
